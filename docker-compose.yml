@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: postgres
+    build:
+      context: .
+      dockerfile: ./docker/postgres/Dockerfile
+    # postgres 設定
+    environment:
+      - POSTGRES_USER=app_user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=app_dbs
+  # Go
+  app:
+    container_name: app
+    depends_on:
+      - postgres
+    build:
+      context: .
+      dockerfile: ./docker/golang/Dockerfile
+    environment:
+      - GOPATH=/go
+    volumes:
+      - ./go:/go/src/app/go/
+    command: go run /Users/takenariyamamoto/dev/docker-practice/go/main.go
