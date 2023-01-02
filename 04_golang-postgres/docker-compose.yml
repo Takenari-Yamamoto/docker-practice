@@ -1,0 +1,10 @@
+version: '3'
+services:
+  go:
+    build: ./docker
+    tty: true
+    volumes:
+      - type: bind
+        source: './cmd'
+        target: '/go/src/app'
+    working_dir: /go/src/app
