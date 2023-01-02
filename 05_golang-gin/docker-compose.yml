@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  api:
+    build: .
+    container_name: golang-api-container
+    ports:
+      - '8080:8000'
+    volumes:
+      - ./src:/app
+    tty: true
