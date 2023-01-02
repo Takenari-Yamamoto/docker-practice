@@ -2,6 +2,7 @@ version: '3'
 services:
   go:
     build: ./docker
+    container_name: api-container
     tty: true
     volumes:
       - type: bind
